@@ -628,3 +628,61 @@ function templateRadioSelector(ele) {
   $(ele).css('background-color', '#80808088');
   $(ele).find('input').prop('checked', true);
 }
+
+
+// Load countries from API
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("https://countriesnow.space/api/v0.1/countries/positions")
+    .then(res => res.json())
+    .then(data => {
+      const countrySelect = document.getElementById("country");
+      data.data.forEach(c => {
+        const option = document.createElement("option");
+        option.value = c.name;
+        option.text = c.name;
+        countrySelect.appendChild(option);
+      });
+    });
+});
+
+function getStates() {
+  const country = document.getElementById("country").value;
+  fetch("https://countriesnow.space/api/v0.1/countries/states", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ country })
+  })
+  .then(res => res.json())
+  .then(data => {
+    const stateSelect = document.getElementById("state");
+    stateSelect.innerHTML = '<option selected disabled>State</option>';
+    data.data.states.forEach(s => {
+      const option = document.createElement("option");
+      option.value = s.name;
+      option.text = s.name;
+      stateSelect.appendChild(option);
+    });
+    document.getElementById("city").innerHTML = '<option selected disabled>City</option>';
+  });
+}
+
+function getCities() {
+  const country = document.getElementById("country").value;
+  const state = document.getElementById("state").value;
+  fetch("https://countriesnow.space/api/v0.1/countries/state/cities", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ country, state })
+  })
+  .then(res => res.json())
+  .then(data => {
+    const citySelect = document.getElementById("city");
+    citySelect.innerHTML = '<option selected disabled>City</option>';
+    data.data.forEach(city => {
+      const option = document.createElement("option");
+      option.value = city;
+      option.text = city;
+      citySelect.appendChild(option);
+    });
+  });
+}
