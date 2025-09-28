@@ -1,5 +1,8 @@
 ## Running the Project
+Live link to run this project :
 
+https://res-gen-pro.netlify.app/
+(OR)
 To run this project locally, follow these steps:
 
 1. **Clone the Repository**  
