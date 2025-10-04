@@ -157,28 +157,36 @@
 		</div>
 	</div>
 	<div class="container Form">
-		<h1>Contact Us</h1>
-		<div class="row">
-			<form class="row g-3">
-				<div class="col-md-6">
-					<label for="name" class="form-label">Name</label>
-					<input type="text" class="form-control" id="inputEmail4">
-				</div>
-				<div class="col-md-6">
-					<label for="inputEmail4" class="form-label">Email</label>
-					<input type="email" class="form-control" id="inputEmail4">
-				</div>
-				<div class="col-12">
-					<label for="inputAddress" class="form-label">Feedback</label>
-					<textarea type="text" class="form-control" row="5" id="inputAddress"
-						placeholder="Your Feedback"></textarea>
-				</div>
-				<div class="col-12">
-					<button type="submit" class="btn btn-primary">Submit</button>
-				</div>
-			</form>
-		</div>
-	</div>
+  <h1>Contact Us</h1>
+  <div class="row">
+    <!-- Updated Form with Formspree -->
+    <form class="row g-3" id="contact-form" action="https://formspree.io/f/movklaka" method="POST">
+      
+      <!-- Name -->
+      <div class="col-md-6">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+      </div>
+
+      <!-- Email -->
+      <div class="col-md-6">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+      </div>
+
+      <!-- Feedback / Message -->
+      <div class="col-12">
+        <label for="message" class="form-label">Feedback</label>
+        <textarea class="form-control" id="message" name="message" rows="5" placeholder="Your Feedback" required></textarea>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
 	
 	<footer class="page-footer font-small black">
 		<div class="footer-copyright text-center py-3">© 2021 Copyright
